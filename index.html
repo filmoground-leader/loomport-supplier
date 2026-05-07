@@ -262,20 +262,21 @@ function handleSubmit(e) {
   const form = e.target;
   const btn = form.querySelector('.btn-submit');
   
-  const data = {
-    phone: form.querySelector('input[type="tel"]').value,
-    email: form.querySelector('input[type="email"]').value,
-    channel: form.querySelector('input[name="channel"]:checked')?.value || '',
-    region: form.querySelector('input[name="region"]:checked')?.value || ''
-  };
+  const phone = form.querySelector('input[type="tel"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const channel = form.querySelector('input[name="channel"]:checked')?.value || '';
+  const region = form.querySelector('input[name="region"]:checked')?.value || '';
 
   btn.textContent = currentLang === 'ko' ? '제출 중...' : 'Submitting...';
   btn.disabled = true;
 
-  fetch('https://script.google.com/macros/s/AKfycbypXhQpkDqOVnNfMaOfcKUY8DW-MC8X6J1ohIkb_aHwamtTwBEi9Bdm2OV58tnNMqEz9Q/exec', {
-    method: 'POST',
-    body: JSON.stringify(data)
-  })
+  const url = 'https://script.google.com/macros/s/AKfycbyvBzJ1lY1wHcRs04HzVxKWnXM0dOX8oCZe1OBzeB8RqTywrhDwNCsHyFFSUc9Z93NMPA/exec'
+    + '?phone=' + encodeURIComponent(phone)
+    + '&email=' + encodeURIComponent(email)
+    + '&channel=' + encodeURIComponent(channel)
+    + '&region=' + encodeURIComponent(region);
+
+  fetch(url, { method: 'GET', mode: 'no-cors' })
   .then(() => {
     btn.textContent = currentLang === 'ko' ? '신청이 완료되었습니다 ✓' : 'Application submitted ✓';
     btn.style.background = '#3a5c3c';
