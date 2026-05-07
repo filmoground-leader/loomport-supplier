@@ -270,21 +270,18 @@ function handleSubmit(e) {
   btn.textContent = currentLang === 'ko' ? '제출 중...' : 'Submitting...';
   btn.disabled = true;
 
-  const url = 'https://script.google.com/macros/s/AKfycbxqIEy5Q7PmnBBMC_WRXks8vSimhli-OcWmSCH4U21Bf_-z1z1LTWbIiYw-JJIbVhRd9w/exec'
+  const url = 'https://script.google.com/macros/s/AKfycbzJA8ORpIhKX0HqUz2oJHwZl8EL8LtZWDmfkFd_F9aPqdUZQoH17Nmji5ETBGuIGv54fQ/exec'
     + '?phone=' + encodeURIComponent(phone)
     + '&email=' + encodeURIComponent(email)
     + '&channel=' + encodeURIComponent(channel)
     + '&region=' + encodeURIComponent(region);
 
-  fetch(url, { method: 'GET', mode: 'no-cors' })
-  .then(() => {
+  const img = new Image();
+  img.src = url;
+  img.onload = img.onerror = function() {
     btn.textContent = currentLang === 'ko' ? '신청이 완료되었습니다 ✓' : 'Application submitted ✓';
     btn.style.background = '#3a5c3c';
-  })
-  .catch(() => {
-    btn.textContent = currentLang === 'ko' ? '오류가 발생했습니다. 다시 시도해주세요.' : 'Error. Please try again.';
-    btn.disabled = false;
-  });
+  };
 }
 </script>
 </body>
