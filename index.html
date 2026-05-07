@@ -259,10 +259,31 @@ function setLang(lang) {
 
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit');
-  btn.textContent = currentLang === 'ko' ? '신청이 완료되었습니다 ✓' : 'Application submitted ✓';
-  btn.style.background = '#3a5c3c';
+  const form = e.target;
+  const btn = form.querySelector('.btn-submit');
+  
+  const data = {
+    phone: form.querySelector('input[type="tel"]').value,
+    email: form.querySelector('input[type="email"]').value,
+    channel: form.querySelector('input[name="channel"]:checked')?.value || '',
+    region: form.querySelector('input[name="region"]:checked')?.value || ''
+  };
+
+  btn.textContent = currentLang === 'ko' ? '제출 중...' : 'Submitting...';
   btn.disabled = true;
+
+  fetch('https://script.google.com/macros/s/AKfycbyRmw5SoKp9JkZ3n2WGruSnZSDBhLC4Rmvx-ZdP65kc0HlGOo-cETcYyPd5KHavFkn7/exec', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    btn.textContent = currentLang === 'ko' ? '신청이 완료되었습니다 ✓' : 'Application submitted ✓';
+    btn.style.background = '#3a5c3c';
+  })
+  .catch(() => {
+    btn.textContent = currentLang === 'ko' ? '오류가 발생했습니다. 다시 시도해주세요.' : 'Error. Please try again.';
+    btn.disabled = false;
+  });
 }
 </script>
 </body>
