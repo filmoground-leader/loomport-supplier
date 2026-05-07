@@ -272,7 +272,7 @@ function handleSubmit(e) {
   btn.textContent = currentLang === 'ko' ? '제출 중...' : 'Submitting...';
   btn.disabled = true;
 
-  fetch('https://script.google.com/macros/s/AKfycbyRmw5SoKp9JkZ3n2WGruSnZSDBhLC4Rmvx-ZdP65kc0HlGOo-cETcYyPd5KHavFkn7/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbyvBzJ1lY1wHcRs04HzVxKWnXM0dOX8oCZe1OBzeB8RqTywrhDwNCsHyFFSUc9Z93NMPA/exec', {
     method: 'POST',
     body: JSON.stringify(data)
   })
