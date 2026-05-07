@@ -19,12 +19,10 @@
   body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 64px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-  .nav-logo { font-size: 17px; font-weight: 800; letter-spacing: 0.06em; color: var(--dark); text-decoration: none; }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-  .nav-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: var(--blue-dark); background: var(--blue-light); padding: 4px 12px; border-radius: 100px; text-transform: uppercase; }
-  .nav-cta { font-size: 13px; font-weight: 600; color: var(--white); background: var(--dark); padding: 9px 20px; border-radius: 6px; text-decoration: none; transition: opacity 0.15s; }
-  .nav-cta:hover { opacity: 0.8; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: center; position: fixed; padding: 0 2.5rem; height: 64px; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { text-decoration: none; display: flex; align-items: center; }
+  .nav-logo img { height: 36px; }
+  .nav-right { position: absolute; right: 2.5rem; display: flex; align-items: center; gap: 12px; }
 
   /* LANG TOGGLE */
   .lang-toggle { display: flex; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 3px; gap: 2px; }
@@ -103,7 +101,7 @@
 
   @media (max-width: 768px) {
     nav { padding: 0 1.25rem; }
-    .nav-tag { display: none; }
+    .nav-right { right: 1.25rem; }
     section { padding: 80px 1.25rem; }
     #hero { padding: 140px 1.25rem 80px; }
     .pain-grid { grid-template-columns: 1fr; }
@@ -116,14 +114,14 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">LOOMPORT</a>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="LOOMPORT">
+  </a>
   <div class="nav-right">
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('ko')">KO</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <span class="nav-tag">Supplier Pre-Registration</span>
-    <a href="#apply" class="nav-cta" data-ko="사전 신청하기 →" data-en="Apply Now →">사전 신청하기 →</a>
   </div>
 </nav>
 
@@ -164,26 +162,26 @@
 
 <section id="get">
   <p class="label">02 — WHAT YOU GET</p>
-  <h2 data-ko="입점하면 달라집니다." data-en="Everything changes when you join.">입점하면 달라집니다.</h2>
+  <h2 data-ko="함께하면 달라집니다." data-en="Everything changes when you join.">함께하면 달라집니다.</h2>
   <p class="sub" data-ko="Here's what you get." data-en="Here's what you get.">Here's what you get.</p>
   <div class="get-grid">
     <div class="get-card">
       <div class="get-num">01</div>
       <div class="get-title" data-ko="전국 네트워크" data-en="Nationwide Network">전국 네트워크</div>
       <div class="get-en">Nationwide Online Network</div>
-      <p class="get-desc" data-ko="단골 외에 새로운 거래처가 필요하신 분. 전국 바이어를 온라인으로 만납니다. 직접 영업하러 다닐 필요 없습니다." data-en="Meet buyers from across the country online. No cold calls, no travel — your inventory speaks for itself.">단골 외에 새로운 거래처가 필요하신 분. 전국 바이어를 온라인으로 만납니다. 직접 영업하러 다닐 필요 없습니다.</p>
+      <p class="get-desc" data-ko="전국 바이어를 온라인으로 연결.<br>영업 없이 새로운 거래처 확보." data-en="Connect with buyers nationwide.<br>No cold calls, no travel.">전국 바이어를 온라인으로 연결.<br>영업 없이 새로운 거래처 확보.</p>
     </div>
     <div class="get-card">
       <div class="get-num">02</div>
       <div class="get-title" data-ko="간편 상품 등록" data-en="Easy Listing">간편 상품 등록</div>
       <div class="get-en">Easy Listing</div>
-      <p class="get-desc" data-ko="사진과 기본 정보만으로 즉시 등록 가능합니다. 키워드 기반으로 상품이 노출되어 찾는 바이어에게 먼저 닿습니다." data-en="List with just photos and basic info. Keyword-based exposure ensures the right buyers find you first.">사진과 기본 정보만으로 즉시 등록 가능합니다. 키워드 기반으로 상품이 노출되어 찾는 바이어에게 먼저 닿습니다.</p>
+      <p class="get-desc" data-ko="사진과 기본 정보만으로 즉시 등록.<br>키워드 기반 노출로 찾는 바이어에게 먼저." data-en="List with just photos and basic info.<br>The right buyers find you first.">사진과 기본 정보만으로 즉시 등록.<br>키워드 기반 노출로 찾는 바이어에게 먼저.</p>
     </div>
     <div class="get-card">
       <div class="get-num">03</div>
       <div class="get-title" data-ko="현금흐름 개선" data-en="Better Cash Flow">현금흐름 개선</div>
       <div class="get-en">Better Cash Flow</div>
-      <p class="get-desc" data-ko="묶음 단위 판매로 빠른 현금 회전이 가능합니다. 물건이 팔려야 자산이 됩니다." data-en="Bulk unit sales enable faster cash turnover. Stock that moves is stock that earns.">묶음 단위 판매로 빠른 현금 회전이 가능합니다. 물건이 팔려야 자산이 됩니다.</p>
+      <p class="get-desc" data-ko="묶음 단위 판매로 빠른 현금 회전.<br>팔려야 자산." data-en="Bulk sales, faster cash turnover.<br>Stock that moves is stock that earns.">묶음 단위 판매로 빠른 현금 회전.<br>팔려야 자산.</p>
     </div>
   </div>
 </section>
@@ -201,7 +199,7 @@
       <form class="form-group" onsubmit="handleSubmit(event)">
         <div class="form-field">
           <label class="form-label" data-ko="1. 연락처 *" data-en="1. Phone *">1. 연락처 *</label>
-          <input class="form-input" type="tel" placeholder="010-0000-0000" required>
+          <input class="form-input" type="tel" placeholder="010 0000 0000" required>
         </div>
         <div class="form-field">
           <label class="form-label" data-ko="2. 메일주소 *" data-en="2. Email *">2. 메일주소 *</label>
@@ -227,6 +225,7 @@
         </div>
         <p class="form-note" data-ko="* 표시는 필수 입력 항목입니다." data-en="* Required fields.">* 표시는 필수 입력 항목입니다.</p>
         <button type="submit" class="btn-submit" data-ko="사전 신청하기 →" data-en="Submit Application →">사전 신청하기 →</button>
+        <a href="https://loomport.com" class="btn-ghost" style="text-align:center; margin-top: 8px;" data-ko="← 사이트로 돌아가기" data-en="← Back to site">← 사이트로 돌아가기</a>
       </form>
     </div>
   </div>
@@ -261,7 +260,7 @@ function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const btn = form.querySelector('.btn-submit');
-  
+
   const phone = form.querySelector('input[type="tel"]').value;
   const email = form.querySelector('input[type="email"]').value;
   const channel = form.querySelector('input[name="channel"]:checked')?.value || '';
