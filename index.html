@@ -226,7 +226,7 @@
           </div>
         </div>
         <p class="form-note" data-ko="* 표시는 필수 입력 항목입니다." data-en="* Required fields.">* 표시는 필수 입력 항목입니다.</p>
-        <button type="submit" class="btn-submit" data-ko="사전 신청하기 →" data-en="Submit Application →">사전 신청하기 →</button>
+        <button type="submit" class="btn-submit" id="submitBtn">사전 신청하기 →</button>
         <a href="https://loomport.com" class="btn-back" data-ko="← 사이트로 돌아가기" data-en="← Back to site">← 사이트로 돌아가기</a>
       </form>
     </div>
@@ -256,6 +256,11 @@ function setLang(lang) {
       }
     }
   });
+
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn && !submitBtn.disabled) {
+    submitBtn.textContent = lang === 'ko' ? '사전 신청하기 →' : 'Submit Application →';
+  }
 }
 
 function handleSubmit(e) {
